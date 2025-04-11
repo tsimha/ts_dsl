@@ -1,0 +1,29 @@
+Pipeline{
+agent any 
+environment{ 
+ΡΑΤΗ "opt/maven3/bin:$PATH" 
+stages{ 
+stage("Git Checkout"){ 
+steps{ 
+git branch: 'Prod', credentialsId: 'tsimhachalam', url: 'https://github.com/thamminenisimhachalam/ts_dsl.git'
+}
+} 
+stage "Maven Build"){ 
+staps{ 
+sh "mvn clean package" 
+sh "mv target/*.war target/myweb.war" 
+}
+}
+stage("deploy-dev"){ 
+steps{ 
+sshagent(['tomcat new]){
+sh""" 
+scp -o StrictHostKeyChecking-no target/myweb.war ec2-user@172.31.38.118/home/ec2-user/apache-tomcat-9.0.46/webapps/
+ssh ec2-ucer@172.31.38.118 /home/ec2-user/apache-tomcat-9.8.46/bin/shutdown.sh 
+ssh ec2-user@172.31.38.118 /home/ec2-user/apache-tomcat-9.0.46/bin/startup.sh 
+"""
+}
+}
+}
+}
+}
