@@ -16,7 +16,7 @@ sh "mv target/*.war target/myweb.war"
 }
 stage("deploy-dev"){ 
 steps{ 
-sshagent(['tomcat new]){
+sshagent(['sshkey']){
 sh""" 
 scp -o StrictHostKeyChecking-no target/myweb.war ec2-user@172.31.43.48/home/ec2-user/apache-tomcat-10.1.40/webapps/
 ssh ec2-ucer@172.31.43.48 /home/ec2-user/apache-tomcat-10.1.40/bin/shutdown.sh 
