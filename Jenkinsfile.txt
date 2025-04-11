@@ -1,4 +1,4 @@
-Pipeline{
+pipeline{
 agent any 
 environment{ 
 ΡΑΤΗ "opt/maven3/bin:$PATH" 
