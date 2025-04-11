@@ -18,9 +18,9 @@ stage("deploy-dev"){
 steps{ 
 sshagent(['tomcat new]){
 sh""" 
-scp -o StrictHostKeyChecking-no target/myweb.war ec2-user@172.31.38.118/home/ec2-user/apache-tomcat-9.0.46/webapps/
-ssh ec2-ucer@172.31.38.118 /home/ec2-user/apache-tomcat-9.8.46/bin/shutdown.sh 
-ssh ec2-user@172.31.38.118 /home/ec2-user/apache-tomcat-9.0.46/bin/startup.sh 
+scp -o StrictHostKeyChecking-no target/myweb.war ec2-user@172.31.43.48/home/ec2-user/apache-tomcat-10.1.40/webapps/
+ssh ec2-ucer@172.31.43.48 /home/ec2-user/apache-tomcat-10.1.40/bin/shutdown.sh 
+ssh ec2-user@172.31.43.48 /home/ec2-user/apache-tomcat-10.1.40/bin/startup.sh 
 """
 }
 }
